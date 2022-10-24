@@ -74,7 +74,7 @@ jobs:
           DO_SECRET: ${{ secrets.DO_SECRET }}
           DO_NAME: ${{ secrets.DO_NAME }}
           DO_REGION: ams3
-          DO_DIR: img
+          SPACE_DIR: img
           CF_TOKEN: ${{ secrets.CF_TOKEN }}
           CF_ZONE: ${{ secrets.CF_ZONE }}
           CF_URL: https://cdn.mydomain.com/img/
@@ -90,7 +90,7 @@ jobs:
 | `DO_SECRET` | Your Spaces Secret Access Key. [See details.](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key) | `secret env` | **Yes** | N/A |
 | `DO_NAME` | The name of the space you're syncing to. For example, `my-space`. | `secret env` | **Yes** | N/A |
 | `DO_REGION` | The region where you created your space in. For example, `ams3`. [See supported regions.](https://www.digitalocean.com/docs/platform/availability-matrix/) | `env` | **Yes** | N/A |
-| `DO_DIR` | The directory inside of the space you wish to sync to. For example, `my_project`. Defaults to the root of the space. | `env` | No | `/` |
+| `SPACE_DIR` | The directory inside of the space you wish to sync to. For example, `my_project`. Defaults to the root of the space. | `env` | No | `/` |
 | `LOCAL_DIR` | The local directory you wish to sync. For example, `public`. Defaults to your entire repository. | `env` | No | `/` |
 | `DELETE_UNTRACKED` | If empty or set to `true`, deletes any files in the space that are *not* present in the source directory. | `env` | No | `true` |
 | `FILES_PRIVATE` | Make files private, default `false`. | `env` | No | `false` |
