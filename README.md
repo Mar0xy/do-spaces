@@ -94,6 +94,7 @@ jobs:
 | `LOCAL_DIR` | The local directory you wish to sync. For example, `public`. Defaults to your entire repository. | `env` | No | `/` |
 | `DELETE_UNTRACKED` | If empty or set to `true`, deletes any files in the space that are *not* present in the source directory. | `env` | No | `true` |
 | `FILES_PRIVATE` | Make files private, default `false`. | `env` | No | `false` |
+| `EXCLUDE_LIST` | Use `.s3ignore` when set to `true` allowing you to exclude paths and files | `env` | No | `false` |
 | `ADD_HEADER` | Add custom header e.g. `Content-Encoding:gzip`. [See supported headers.](https://docs.digitalocean.com/products/spaces/how-to/set-file-metadata/) | `env` | No | N/A |
 | `DO_TOKEN` | Personal access token with Write scope, required only to purge DigitalOcean CDN. [See details.](https://docs.digitalocean.com/reference/api/create-personal-access-token/)  | `secret env` | No | N/A |
 
