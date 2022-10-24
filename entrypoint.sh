@@ -66,6 +66,12 @@ else
   CF_URL='/'
 fi
 
+if [ -z "$EXCLUDE_LIST" ] || [ "$EXCLUDE_LIST" != 'true' ]; then
+  EXCLUDE_LIST="--exclude=.git"
+else
+  EXCLUDE_LIST="--exclude-from=.s3ignore"
+fi
+
 ENDPOINT="$DO_REGION.digitaloceanspaces.com"
 cat >> "$HOME/.s3cfg" <<CONFIG
 access_key = ${DO_ACCESS}
@@ -76,7 +82,7 @@ host_bucket = %(bucket).${ENDPOINT}
 CONFIG
 
 S3="s3://$DO_NAME/"
-UPDATES=$(s3cmd --no-preserve --no-check-md5 --no-progress --recursive --exclude=.git $DELETE_FLAG $ACCESS_FLAG $HEADER_FLAG sync $LOCAL_DIR $S3$SPACE_DIR)
+UPDATES=$(s3cmd --no-preserve --no-check-md5 --no-progress --recursive $EXCLUDE_LIST $DELETE_FLAG $ACCESS_FLAG $HEADER_FLAG sync $LOCAL_DIR $S3$SPACE_DIR)
 DO_FILES=''
 CF_URLS=''
 echo 'Changes successfully updated in DigitalOcean Space:'
